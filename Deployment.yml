@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: Pfe_Progress
+spec:
+   replicas: 2
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     app: Pfe_Progress
+   template:
+      metadata:
+        labels:
+          app: Pfe_Progress
+      spec:
+       containers:
+        - name: Pfe_Progress
+          image: dorramj/spring-ansible
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
